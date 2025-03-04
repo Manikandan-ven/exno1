@@ -63,6 +63,18 @@ data.describe()
 data.shape
 ```
 ![image](https://github.com/user-attachments/assets/8a716658-0adb-4acb-84b5-05a66fb08300)
+```
+data.fillna(method='ffill')
+```
+![image](https://github.com/user-attachments/assets/9bafc610-ebd9-4bd8-9d15-9f3db9b90188)
+```
+data.fillna(method='bfill')
+```
+![Screenshot 2025-03-04 112501](https://github.com/user-attachments/assets/14a59b70-a96e-42d4-ba7b-5ab88c257448)
+```
+```
+
+
 
 
 

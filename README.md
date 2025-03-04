@@ -21,6 +21,7 @@ STEP 5: Remove outliers using IQR
 STEP 6: Use zscore of to remove outliers
 
 # Coding and Output
+# DATA CLEANING
 ```
 import pandas as pd
 data=pd.read_csv("/content/Data_set.csv")
@@ -72,7 +73,55 @@ data.fillna(method='bfill')
 ```
 ![Screenshot 2025-03-04 112501](https://github.com/user-attachments/assets/14a59b70-a96e-42d4-ba7b-5ab88c257448)
 ```
+data.isnull().sum()
 ```
+![image](https://github.com/user-attachments/assets/e4b25674-cbe6-4933-835f-1651b9e9acbf)
+```
+data.isnull().any()
+```
+![image](https://github.com/user-attachments/assets/db3a889a-de66-4690-980a-1bc1af7dd142)
+
+
+#IQR(inter quartile range)
+```
+ir=pd.read_csv("/content/iris.csv")
+df
+```
+![image](https://github.com/user-attachments/assets/c4f255bd-4fcc-4072-aafc-7f60b16c22cd)
+```
+ir.describe()
+```
+![image](https://github.com/user-attachments/assets/f3c01840-1df8-4102-a5ac-9ae1a24a6b2d)
+
+
+```
+import seaborn as sns
+sns.boxplot(x='sepal_width' ,data=df)
+```
+![image](https://github.com/user-attachments/assets/02c93958-39b4-47c9-9d12-99cb2e789065)
+```
+c1=ir.sepal_width.quantile(0.25)
+c3=ir.sepal_width.quantile(0.75)
+iq=c3-c1
+print(c3)
+```
+![image](https://github.com/user-attachments/assets/737a5010-52c8-4ae8-a2ea-4639a76ec9c2)
+```
+rid=ir[((ir.sepal_width<(c1-1.5*iq))|(ir.sepal_width>(c3+1.5*iq)))]
+rid['sepal_width']
+```
+![image](https://github.com/user-attachments/assets/49a3c808-b44d-40a2-84a4-d6e299d5c088)
+```
+delid=ir[~((ir.sepal_width<(c1-1.5*iq))|(ir.sepal_width>(c3+1.5*iq)))]
+delid
+```
+![image](https://github.com/user-attachments/assets/1f6ad030-d40e-48a2-81bc-01353bf6cc35)
+```
+```
+
+
+
+
 
 
 

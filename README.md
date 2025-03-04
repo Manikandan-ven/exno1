@@ -117,21 +117,65 @@ delid
 ```
 ![image](https://github.com/user-attachments/assets/1f6ad030-d40e-48a2-81bc-01353bf6cc35)
 ```
+import seaborn as sns
+sns.boxplot(x='sepal_width',data=delid)
 ```
+![image](https://github.com/user-attachments/assets/af06529f-304d-451d-812b-6d1b6e37b1ea)
+# z-score
+```
+import pandas as pd
+import scipy.stats as stats
+import numpy as np
+df=pd.read_csv("/content/heights.csv")
+df
+```
+![image](https://github.com/user-attachments/assets/56cdb980-61d5-4f05-855f-0960e2cb4f10)
 
+```
+z=np.abs(stats.zscore(df['height']))
+z
+```
+![image](https://github.com/user-attachments/assets/b98b2eaa-e5d3-441b-a32a-93ae45b65407)
+```
+df = pd.read_csv("heights.csv")
+ q1 = df['height'].quantile(0.25)
+ q2 = df['height'].quantile(0.5)
+ q3 = df['height'].quantile(0.75)
+ iqr = q3-q1
+ iqr
+ 
+```
+![image](https://github.com/user-attachments/assets/df46e4ad-13f6-477d-b28c-c82fffb930ac)
 
+```
+low = q1- 1.5*iqr
+ low
+ 
+```
+![image](https://github.com/user-attachments/assets/5ac9f459-90eb-439f-868e-39067489b2a4)
+```
+ high = q3 + 1.5*iqr
+ high
 
-
-
-
-
-
-
-
-
-
+```
+![image](https://github.com/user-attachments/assets/d503bf31-edbb-4b2f-8f81-3dc694fd2e0f)
+```
+df1 = df[((df['height'] >=low)& (df['height'] <=high))]
+df1
+```
+![image](https://github.com/user-attachments/assets/1cc0c36d-ff2f-4185-a08e-a29b1b0768ee)
+```
+ z = np.abs(stats.zscore(df['height']))
+ z
+```
+![image](https://github.com/user-attachments/assets/e6ca6216-272d-43f8-9f4e-d170c2cd689c)
+```
+df1 = df[z<3]
+ df1
+```
+![image](https://github.com/user-attachments/assets/c6fd0e54-a7cf-46e2-8a47-930af4de9d28)
 
 
 
 # Result
-          <<include your Result here>>
+          Thus we have cleaned the data and removed the outliers by detection using IQR and Z-score method
